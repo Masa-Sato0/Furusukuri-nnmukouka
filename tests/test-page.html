@@ -1,0 +1,8 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FWS ローカルテスト</title><link rel="stylesheet" href="test-page.css"><script src="test-page.js" defer></script></head>
+<body><main id="app"><h1>Fullscreen Web Search テスト</h1><p>設定で http://localhost:8787 と http://127.0.0.1:8787 を許可してください。検索APIへアクセスするには有効なAPIキーが必要です。</p>
+<div id="controls"><button id="fullscreen">コンテナーを全画面表示</button><button id="exit">全画面を解除</button><button id="spa">SPA遷移</button><button id="replace">DOMを再生成</button><button id="body-replace">bodyを置換</button><button id="open-shadow">Shadow DOM内を全画面表示</button><button id="video-fullscreen">video要素を全画面表示</button><a href="/second.html">通常ページへ遷移</a></div>
+<p id="state" role="status">通常表示</p><div id="stage" tabindex="0"><h2>全画面コンテナー</h2><p>Ctrl+Shift+Yで検索パネルを開閉します。閉じるボタンで閉じた後も全画面が維持されることを確認してください。</p><button id="stage-exit">全画面を解除</button><button id="stage-replace">このコンテナーのDOMを再生成</button><div id="stage-content">全画面の内容</div></div>
+<div id="shadow-host"></div><video id="test-video" controls></video>
+<h2>iframeテスト</h2><p>親と同じサイトのiframe、別ホストのiframe、sandboxのiframeを比較します。子サイトを許可しない場合は、パネルが配置されない理由を拡張機能のポップアップで確認してください。</p>
+<iframe title="同一サイト" src="/frame.html" allow="fullscreen"></iframe><iframe title="別ホスト" src="http://127.0.0.1:8787/frame.html" allow="fullscreen"></iframe><iframe title="sandbox" src="/frame.html" sandbox="allow-scripts" allow="fullscreen"></iframe>
+<p id="route">初期ルート</p></main></body></html>

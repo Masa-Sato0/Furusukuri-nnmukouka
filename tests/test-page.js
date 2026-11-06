@@ -1,0 +1,20 @@
+'use strict';
+const $ = id => document.getElementById(id);
+const report = error => { $('state').textContent = error.message; };
+$('fullscreen').onclick = () => $('stage').requestFullscreen().catch(report);
+$('exit').onclick = $('stage-exit').onclick = () => document.exitFullscreen().catch(report);
+$('spa').onclick = () => { history.pushState({}, '', `/spa/${Date.now()}`); $('route').textContent = `SPAルート：${location.pathname}`; };
+$('replace').onclick = $('stage-replace').onclick = () => { $('stage-content').replaceChildren(Object.assign(document.createElement('p'), {textContent: 'コンテンツを再生成しました。', className: 'rebuilt'})); };
+$('body-replace').onclick = () => {
+  const next = document.createElement('body');
+  const title = document.createElement('h1'); title.textContent = 'bodyを置換しました';
+  const link = document.createElement('a'); link.href = '/'; link.textContent = '最初のページへ';
+  next.append(title, link); document.body.replaceWith(next);
+};
+const shadow = $('shadow-host').attachShadow({mode: 'open'});
+const target = document.createElement('section');
+target.style.cssText = 'background:#182a40;color:white;padding:30px'; target.textContent = 'Open Shadow DOMの全画面要素'; shadow.append(target);
+$('open-shadow').onclick = () => target.requestFullscreen().catch(report);
+$('video-fullscreen').onclick = () => $('test-video').requestFullscreen().catch(report);
+document.addEventListener('fullscreenchange', () => { if ($('state')) $('state').textContent = document.fullscreenElement ? `全画面：${document.fullscreenElement.id}` : '通常表示'; });
+window.addEventListener('popstate', () => { if ($('route')) $('route').textContent = location.pathname; });

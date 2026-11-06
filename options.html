@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fullscreen Web Search 設定</title><link rel="stylesheet" href="settings.css"><script src="shared.js" defer></script><script src="options.js" defer></script></head>
+<body><main>
+<p class="eyebrow">FULLSCREEN WEB SEARCH</p><h1>検索の設定</h1>
+<p>利用が認められているサイトだけを追加してください。検索語だけをBraveに送信し、ページ本文・Cookie・認証情報・閲覧履歴は送信しません。</p>
+<section><h2>Brave Search API</h2>
+<p id="key-state" role="status">確認中…</p>
+<form id="key-form"><label for="api-key">APIキー</label><input id="api-key" type="password" autocomplete="off" spellcheck="false" maxlength="512" placeholder="新しいキーを入力"><div class="actions"><button type="submit">キーを保存</button><button id="delete-key" type="button" class="secondary">キーを削除</button></div></form>
+<p class="small">キーはこのChromeプロファイルの chrome.storage.local に保存されます。暗号化保管庫ではありません。同期やページへの受け渡しは行いません。</p>
+<p><a href="https://api-dashboard.search.brave.com/" target="_blank" rel="noopener noreferrer">Brave APIダッシュボード ↗</a></p></section>
+<section><h2>許可するサイト</h2>
+<form id="site-form"><label for="site-url">正確なサイトURL（http / https）</label><div class="row"><input id="site-url" type="url" required placeholder="https://example.com/"><button type="submit">サイトを許可</button></div></form>
+<p class="small">スキームとホスト単位で許可します。サブドメインは個別に追加してください。Chromeのマッチパターンの仕様により、そのホストの全パス・全ポートが対象です。iframeの親・子サイトも個別の許可が必要です。</p>
+<ul id="sites" aria-label="許可サイト一覧"></ul></section>
+<section><h2>ショートカット</h2><p id="shortcut">確認中…</p><button id="shortcuts" type="button" class="secondary">ショートカット設定を開く</button><p class="small">初期候補は Ctrl+Shift+Y。割り当てが空の場合やChromeOSの機能と競合する場合は、Chromeの拡張機能ショートカット画面で変更してください。</p></section>
+<p id="feedback" role="status" aria-live="polite"></p>
+</main></body></html>
